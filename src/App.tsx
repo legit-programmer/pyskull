@@ -1,6 +1,10 @@
+import Textarea from "./components/Textarea";
+
 function App() {
     return <>
-    <h1 className=" text-red-700">Hello WOrld!</h1>
+    <div className="main">
+    <Textarea/>
+    </div>
     </>;
 }
 
