@@ -3,20 +3,11 @@ import axios from "axios";
 interface props {
     code: string;
     setCode: any;
+    
 }
 
-const Textarea = ({ code, setCode }: props) => {
-    const sendCode = () => {
-        axios.post(
-            "http://127.0.0.1:5000/hammer",
-            { code: code, token: "sdhflkjs" },
-            {
-                headers: {
-                    "content-type": "multipart/form-data",
-                },
-            }
-        );
-    };
+const Textarea = ({ setCode }: props) => {
+    
     return (
         <>
             <div className="">
@@ -27,7 +18,7 @@ const Textarea = ({ code, setCode }: props) => {
                     rows={10}
                 ></textarea>
             </div>
-            <button onClick={sendCode}>Run</button>
+            
         </>
     );
 };
