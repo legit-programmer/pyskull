@@ -16,14 +16,16 @@ function App() {
                     "content-type": "multipart/form-data",
                 },
             }
+        ).then(
+            res=>setOutput(res.data['output'])
         )
     };
     return (
         <>
             <div className="main">
                 <Textarea code={code} setCode={setCode} />
-                <Output output={output} setOutput={setOutput} />
-                <button onClick={sendCode}>Run</button>
+                <Output output={output} setOutput={setOutput} sendCode={sendCode}/>
+                
             </div>
         </>
     );
