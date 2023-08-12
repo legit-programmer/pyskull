@@ -3,10 +3,10 @@ import axios from "axios";
 
 const Textarea = () => {
     const sendCode = () => {
-      axios.post('http://127.0.0.1:5000/hammer', "asdfasf",
+      axios.post('http://127.0.0.1:5000/hammer', {code:"slkdjflsdjf"},
       {
         headers:{
-          'Content-Type':'text/html'
+          "content-type": "multipart/form-data"
         }
       })
     };

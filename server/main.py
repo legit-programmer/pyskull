@@ -12,11 +12,12 @@ def root():
 
 @app.route("/hammer", methods=['POST'])
 def interpret():
-    print("lsdjflksajf lsajf lkjj ")
     if request.method == 'POST':
-        print('catcj')
-        data = request.get_json()
+        
+        data = request.form['code']
+        # data['code']
         print(data)
+        
     # output = subprocess.check_output(command, shell=True, text=True, stderr=subprocess.STDOUT)
     # print(output)
 
