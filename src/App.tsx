@@ -6,9 +6,9 @@ from "axios";
 function App() {
     const [code, setCode] = useState("");
     const [output, setOutput] = useState(Array<string>);
+    const [error, setError] = useState(false);
 
     const sendCode = () => {
-        console.log(output)
         axios.post(
             "http://127.0.0.1:5000/hammer",
             { code: code, token: "sdhflkjs" },
@@ -18,14 +18,14 @@ function App() {
                 },
             }
         ).then(
-            res=>{setOutput(res.data['output'].split('\n'));}
+            res=>{setOutput(res.data['output'].split('\n'));setError(res.data['error'])}
         )
     };
     return (
         <>
             <div className="main">
                 <Textarea code={code} setCode={setCode} />
-                <Output output={output} setOutput={setOutput} sendCode={sendCode}/>
+                <Output output={output} setOutput={setOutput} error={error} sendCode={sendCode}/>
                 
             </div>
         </>
