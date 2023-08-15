@@ -9,13 +9,12 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 def writeTempFile(filename: str, code: str):
     with open(f'{filename}.py', 'w') as file:
-        file.write(code)
+        file.writelines(code.split('\n'))
         return file.name
 
 
 def runTempFile(tempFile):
     command = f"python {tempFile}"
-    # output = subprocess.check_output(command, shell=True, text=True, stderr=subprocess.STDOUT)
     output = subprocess.run(command, capture_output=True)
     os.remove(tempFile)
     if output.returncode!=0:
@@ -36,6 +35,7 @@ def interpret():
         code = request.form['code']
         tempfile = writeTempFile(token, code)
         output = runTempFile(tempfile)
+        print(output)
         return {'output': output}
 
     return "<p>Serving🔨...</p>"

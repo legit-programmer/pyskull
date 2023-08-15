@@ -5,9 +5,10 @@ import axios
 from "axios";
 function App() {
     const [code, setCode] = useState("");
-    const [output, setOutput] = useState("");
+    const [output, setOutput] = useState(Array<string>);
 
     const sendCode = () => {
+        console.log(output)
         axios.post(
             "http://127.0.0.1:5000/hammer",
             { code: code, token: "sdhflkjs" },
@@ -17,7 +18,7 @@ function App() {
                 },
             }
         ).then(
-            res=>setOutput(res.data['output'])
+            res=>{setOutput(res.data['output'].split('\n'));}
         )
     };
     return (
