@@ -6,18 +6,23 @@ import os
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-def writeTempFile(filename:str, code:str):
+
+def writeTempFile(filename: str, code: str):
     with open(f'{filename}.py', 'w') as file:
         file.write(code)
         return file.name
 
+
 def runTempFile(tempFile):
     command = f"python {tempFile}"
-    output = subprocess.check_output(command, shell=True, text=True, stderr=subprocess.STDOUT)
+    # output = subprocess.check_output(command, shell=True, text=True, stderr=subprocess.STDOUT)
+    output = subprocess.run(command, capture_output=True)
     os.remove(tempFile)
-    print(output)
-    return output
+    if output.returncode!=0:
+        return output.stderr.decode()
     
+    return output.stdout.decode()
+
 
 @app.route("/")
 def root():
@@ -32,5 +37,5 @@ def interpret():
         tempfile = writeTempFile(token, code)
         output = runTempFile(tempfile)
         return {'output': output}
-    
+
     return "<p>Serving🔨...</p>"
