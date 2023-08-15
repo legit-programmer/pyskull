@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Textarea from "./components/Textarea";
 import Output from "./components/Output";
-import axios
-from "axios";
+import axios from 'axios';
+import Sidebar from "./components/Sidebar";
+
 function App() {
     const [code, setCode] = useState("");
     const [output, setOutput] = useState(Array<string>);
@@ -23,9 +24,12 @@ function App() {
     };
     return (
         <>
-            <div className="main">
-                <Textarea code={code} setCode={setCode} />
-                <Output output={output} setOutput={setOutput} error={error} sendCode={sendCode}/>
+            <div className="main flex">
+                <Sidebar/>
+                <div>
+                    <Textarea code={code} setCode={setCode} />
+                    <Output output={output} setOutput={setOutput} error={error} sendCode={sendCode}/>
+                </div>
                 
             </div>
         </>
