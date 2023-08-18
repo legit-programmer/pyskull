@@ -6,7 +6,7 @@ interface props {
 }
 const Output = ({ output, sendCode, error }: props) => {
     return (
-        <div className="bg-[#131524] text-white h-[24.3vh]">
+        <div className="bg-[#131524] text-white h-[24.3vh] overflow-auto">
             <div className="output p-2 font-code">
                 {output.map((val) => {
                     return (
