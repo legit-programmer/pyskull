@@ -28,28 +28,26 @@ const Textarea = ({ code, setCode }: props) => {
                         if (key.key === "Enter") {
                             checkAndAddTab();
                         }
-                        
                     }}
                     onKeyDownCapture={(event) => {
                         if (event.key === "Tab") {
                             const index = event.currentTarget.selectionStart;
                             let temp = code;
-                            temp = temp.slice(0, index) + '\t' + temp.slice(index, temp.length)
+                            temp =
+                                temp.slice(0, index) +
+                                "\t" +
+                                temp.slice(index, temp.length);
                             setCode(temp);
-                            setCurPos(index+1)
-                            event.preventDefault()
-                            
-                            
+                            setCurPos(index + 1);
+                            event.preventDefault();
                         }
                     }}
-                    onKeyUpCapture={
-                        (key)=>{
-                            if(key.key==="Tab"){
-                                key.currentTarget.setSelectionRange(curPos, curPos)
-                                console.log('fdsff')
-                            }
+                    onKeyUpCapture={(key) => {
+                        if (key.key === "Tab") {
+                            key.currentTarget.setSelectionRange(curPos, curPos);
+                            console.log("fdsff");
                         }
-                    }
+                    }}
                 />
             </div>
         </>
