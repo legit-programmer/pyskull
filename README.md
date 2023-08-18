@@ -23,8 +23,8 @@ The editor used in this project in completely built from scratch. No third party
 - Runs python code🔥 (obviously)
 - Easy to use👶
 - Syntax highlighting✨(⏳)
-- Supports multiple files (⏳)
-- Supports input from browser (⏳)
+- Supports multiple files📁 (⏳)
+- Supports input from browser📩 (⏳)
 
 ## Installation🛠
 
